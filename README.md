@@ -28,3 +28,4 @@ You also can add ?type=TYPE_HERE
 * Available methods:
   * type=xml
   * type=json
+  * type=csv
