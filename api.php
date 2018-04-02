@@ -44,7 +44,7 @@ class API
 		{
 			return 'Power name cannot be empty!';
 		}
-		$page = $this->loadPage("https://xat.trade/api.php?action=search_power&power={$power}&type={$type}");
+		$page = $this->loadPage("http://xatproject.com/fairtrade/api.php?action=search_power&power={$power}&type={$type}");
 		$json = json_decode($page, true);
 		if ($json['status'] == 'fail')
 		{
@@ -74,7 +74,7 @@ class API
 		{
 			return 'Category cannot be empty!';
 		}
-		$page = $this->loadPage("https://xat.trade/api.php?action=list_powers&category={$cat}&type={$type}");
+		$page = $this->loadPage("http://xatproject.com/fairtrade/api.php?action=list_powers&category={$cat}&type={$type}");
 		$json = json_decode($page, true);
 		if ($json['status'] == 'fail')
 		{
@@ -98,7 +98,7 @@ class API
 	 */
 	public function listPowers($type = 'json')
 	{
-		$page = $this->loadPage("https://xat.trade/api.php?action=powers&type={$type}");
+		$page = $this->loadPage("http://xatproject.com/fairtrade/api.php?action=powers&type={$type}");
 		$json = json_decode($page, true);
 		return $json['powers'];
 	}
