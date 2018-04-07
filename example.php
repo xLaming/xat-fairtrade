@@ -83,18 +83,18 @@ foreach ($json['powers'] as $i => $p)
 	foreach ($powers['everypower'] as $i => $p):
 	?>
 	<tr>
-		<th><?php echo ucfirst($p['name']); ?></th>
-		<th><?php echo $p['title']; ?></th>
-		<th><?php echo $p['store']; ?></th>
-		<th><?php echo $p['min_xats'] . '-' . $p['max_xats']; ?></th>
+		<td><?php echo ucfirst($p['name']); ?></td>
+		<td><?php echo $p['title']; ?></td>
+		<td><?php echo $p['store']; ?></td>
+		<td><?php echo $p['min_xats'] . '-' . $p['max_xats']; ?></td>
 		<th><?php echo $p['min_days'] . '-' . $p['max_days']; ?></th>
-		<th><?php echo $p['limited'] == 1 ? 'Yes' : 'No'; ?></th>
-		<th><?php echo $p['limited'] == 1 ? 'No' : 'Yes'; ?></th>
-		<th><?php echo $p['is_game'] == 1 ? 'Yes' : 'No'; ?></th>
-		<th><?php echo $p['is_group'] == 1 ? 'Yes' : 'No'; ?></th>
-		<th><?php echo $p['is_hug'] == 1 ? 'Yes' : 'No'; ?></th>
-		<th><?php echo $p['is_epic'] == 1 ? 'Yes' : 'No'; ?></th>
-		<th><?php echo $p['is_allp'] == 1 ? 'Yes' : 'No'; ?></th>
+		<td><?php echo $p['limited'] == 1 ? 'Yes' : 'No'; ?></td>
+		<td><?php echo $p['limited'] == 1 ? 'No' : 'Yes'; ?></td>
+		<td><?php echo $p['is_game'] == 1 ? 'Yes' : 'No'; ?></td>
+		<td><?php echo $p['is_group'] == 1 ? 'Yes' : 'No'; ?></td>
+		<td><?php echo $p['is_hug'] == 1 ? 'Yes' : 'No'; ?></td>
+		<td><?php echo $p['is_epic'] == 1 ? 'Yes' : 'No'; ?></td>
+		<td><?php echo $p['is_allp'] == 1 ? 'Yes' : 'No'; ?></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
