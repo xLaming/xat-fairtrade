@@ -87,7 +87,7 @@ foreach ($json['powers'] as $i => $p)
 		<td><?php echo $p['title']; ?></td>
 		<td><?php echo $p['store']; ?></td>
 		<td><?php echo $p['min_xats'] . '-' . $p['max_xats']; ?></td>
-		<th><?php echo $p['min_days'] . '-' . $p['max_days']; ?></th>
+		<td><?php echo $p['min_days'] . '-' . $p['max_days']; ?></td>
 		<td><?php echo $p['limited'] == 1 ? 'Yes' : 'No'; ?></td>
 		<td><?php echo $p['limited'] == 1 ? 'No' : 'Yes'; ?></td>
 		<td><?php echo $p['is_game'] == 1 ? 'Yes' : 'No'; ?></td>
