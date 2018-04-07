@@ -1,6 +1,6 @@
 <?php
-function loadPage($url)
-{
+/* used to load pages using cURL */
+function loadPage($url) {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_HEADER, false);
@@ -12,14 +12,27 @@ function loadPage($url)
 	return $result;
 }
 
-$page = loadPage('https://xatproject.com/fairtrade/api.php?action=powers');
-$json = json_decode($page, true);
+/* load page, decode it and create a variable to store all powers */
+$page   = loadPage('https://xatproject.com/fairtrade/api.php?action=powers');
+$json   = json_decode($page, true);
+$powers = [];
+
+/* get information of each power category */
+foreach ($json['powers'] as $i => $p)
+{
+	if ($p['is_ep']) { $powers['everypower'][] = $p; }
+	if ($p['is_epic']) { $powers['epic'][] = $p; }
+	if ($p['is_allp']) { $powers['allpowers'][] = $p;	}
+	if ($p['is_group']) { $powers['group'][] = $p; }
+	if ($p['limited'] == 1) { $powers['limited'][] = $p; }
+	if ($p['limited'] != 1) { $powers['unlimited'][] = $p; }
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Fairtrade List</title>
+	<title>Fairtrade</title>
 	<style>
 		table { border-collapse: collapse; width: 100%; }
 		th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
@@ -27,6 +40,28 @@ $json = json_decode($page, true);
 	</style>
 </head>
 <body>
+
+<div align="center"> <h2>Total prices</h2> </div>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Xats</th>
+    <th>Days</th>
+    <th>Powers</th>
+  </tr>
+  <?php
+  /* list total prices xats, days and amount of powers */
+  foreach ($powers as $t => $v):
+  ?>
+  <tr>
+    <td><?php echo ucfirst($t); ?></td>
+    <td><?php echo array_sum(array_column($v, 'min_xats')) . '-' . array_sum(array_column($v, 'max_xats')); ?></td>
+    <td><?php echo array_sum(array_column($v, 'min_xats')) . '-' . array_sum(array_column($v, 'max_xats')); ?></td>
+    <td><?php echo count($v); ?></td>
+  </tr>
+  <?php endforeach; ?>
+</table>
+
 <div align="center"> <h2>Power list</h2> </div>
 <table>
 	<tr>
@@ -44,7 +79,8 @@ $json = json_decode($page, true);
 		<th>Allpowers</th>
 	</tr>
 	<?php
-	foreach ($json['powers'] as $i => $p):
+	/* list all powers prices and info */
+	foreach ($powers['everypower'] as $i => $p):
 	?>
 	<tr>
 		<th><?php echo ucfirst($p['name']); ?></th>
