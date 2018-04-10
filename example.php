@@ -56,7 +56,7 @@ foreach ($json['powers'] as $i => $p)
   <tr>
     <td><?php echo ucfirst($t); ?></td>
     <td><?php echo array_sum(array_column($v, 'min_xats')) . '-' . array_sum(array_column($v, 'max_xats')); ?></td>
-    <td><?php echo array_sum(array_column($v, 'min_xats')) . '-' . array_sum(array_column($v, 'max_xats')); ?></td>
+    <td><?php echo array_sum(array_column($v, 'min_days')) . '-' . array_sum(array_column($v, 'max_days')); ?></td>
     <td><?php echo count($v); ?></td>
   </tr>
   <?php endforeach; ?>
